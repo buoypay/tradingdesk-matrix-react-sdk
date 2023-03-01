@@ -458,6 +458,7 @@ export const Notifier = {
     _evaluateEvent: function (ev: MatrixEvent) {
         // Mute notifications for broadcast info events
         if (ev.getType() === VoiceBroadcastInfoEventType) return;
+        console.log('Notifier._evaluateEvent', ev.getRoomId())
 
         let roomId = ev.getRoomId();
         if (LegacyCallHandler.instance.getSupportsVirtualRooms()) {
