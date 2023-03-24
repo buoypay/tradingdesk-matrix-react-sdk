@@ -458,8 +458,16 @@ export const Notifier = {
     _evaluateEvent: function (ev: MatrixEvent) {
         // Mute notifications for broadcast info events
         if (ev.getType() === VoiceBroadcastInfoEventType) return;
-        console.log('Notifier._evaluateEvent', ev.getRoomId())
-
+        console.log('Notifier._evaluateEvent: 2', ev.getRoomId())
+        if (window.dispatchEvent) {
+            console.log('Notifier._evaluateEven dispatching even2')
+            // TODO: read this: https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.events_best_practices
+            window.dispatchEvent(new window.CustomEvent<MatrixEvent>('element', {
+                detail: ev
+            }))
+        } else {
+            console.log("Notifier: error - window.dispatchEvent is not defined")
+        }
         let roomId = ev.getRoomId();
         if (LegacyCallHandler.instance.getSupportsVirtualRooms()) {
             // Attempt to translate a virtual room to a native one

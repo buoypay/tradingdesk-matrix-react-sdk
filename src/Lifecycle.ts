@@ -199,8 +199,12 @@ export function attemptTokenLogin(
         return Promise.resolve(false);
     }
 
-    const homeserver = localStorage.getItem(SSO_HOMESERVER_URL_KEY);
-    const identityServer = localStorage.getItem(SSO_ID_SERVER_URL_KEY);
+    // TODO: replace these with static config
+    // const homeserver = localStorage.getItem(SSO_HOMESERVER_URL_KEY);
+    const homeserver = 'https://matrix.bouypay.com/'
+    // const identityServer = localStorage.getItem(SSO_ID_SERVER_URL_KEY);
+    // TODO: I think this should be cognito something...
+    const identityServer = 'https://vetor.im'
     if (!homeserver) {
         logger.warn("Cannot log in with token: can't determine HS URL to use");
         Modal.createDialog(ErrorDialog, {
@@ -228,6 +232,7 @@ export function attemptTokenLogin(
             });
         })
         .catch((err) => {
+            logger.log('Error logging in' + err)
             Modal.createDialog(ErrorDialog, {
                 title: _t("We couldn't log you in"),
                 description:
