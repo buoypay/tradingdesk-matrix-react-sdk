@@ -397,19 +397,25 @@ const TAG_AESTHETICS: ITagAestheticsMap = {
         defaultHidden: false,
     },
     [DefaultTagID.DM]: {
-        sectionLabel: _td("People"),
+        // Overriden for demo
+        sectionLabel: _td("gtxn staff"),
+        // sectionLabel: _td("People"),
         isInvite: false,
         defaultHidden: false,
         AuxButtonComponent: DmAuxButton,
     },
     [DefaultTagID.Untagged]: {
-        sectionLabel: _td("Rooms"),
+        // Overriden for demo
+        sectionLabel: _td("Active Opportunities"),
+        // sectionLabel: _td("Rooms"),
         isInvite: false,
         defaultHidden: false,
         AuxButtonComponent: UntaggedAuxButton,
     },
     [DefaultTagID.LowPriority]: {
-        sectionLabel: _td("Low priority"),
+        // Overriden for demo
+        sectionLabel: _td("Archived"),
+        // sectionLabel: _td("Low priority"),
         isInvite: false,
         defaultHidden: false,
     },
