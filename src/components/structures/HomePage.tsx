@@ -125,15 +125,21 @@ const HomePage: React.FC<IProps> = ({ justRegistered = false }) => {
             <div className="mx_HomePage_default_wrapper">
                 {introSection}
                 <div className="mx_HomePage_default_buttons">
-                    <AccessibleButton onClick={onClickSendDm} className="mx_HomePage_button_sendDm">
-                        {_tDom("Send a Direct Message")}
+                    {/* TODO: change to chat to kennedy */}
+                    {/* <AccessibleButton onClick={(onClickSendDm)} className="mx_HomePage_button_sendDm"> */}
+                    <AccessibleButton onClick={() => {}} className="mx_HomePage_button_sendDm">
+                        Chat to the gtxn team
+                        {/* {_tDom("Send a Direct Message")} */}
                     </AccessibleButton>
-                    <AccessibleButton onClick={onClickExplore} className="mx_HomePage_button_explore">
-                        {_tDom("Explore Public Rooms")}
+                    {/* <AccessibleButton onClick={onClickExplore} className="mx_HomePage_button_explore"> */}
+                    <AccessibleButton onClick={() => {}} className="mx_HomePage_button_explore">
+                        Talk to gtxnbot
+                        {/* {_tDom("Explore Public Rooms")} */}
                     </AccessibleButton>
-                    <AccessibleButton onClick={onClickNewRoom} className="mx_HomePage_button_createGroup">
+                    {/* hiding this button */}
+                    {/* <AccessibleButton onClick={onClickNewRoom} className="mx_HomePage_button_createGroup">
                         {_tDom("Create a Group Chat")}
-                    </AccessibleButton>
+                    </AccessibleButton> */}
                 </div>
             </div>
         </AutoHideScrollbar>

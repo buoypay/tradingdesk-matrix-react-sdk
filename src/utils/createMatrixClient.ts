@@ -20,6 +20,7 @@ import {
     MemoryCryptoStore,
     MemoryStore,
 } from "matrix-js-sdk/src/matrix";
+import * as Matrix from 'matrix-js-sdk';
 import { IndexedDBCryptoStore } from "matrix-js-sdk/src/crypto/store/indexeddb-crypto-store";
 import { IndexedDBStore } from "matrix-js-sdk/src/store/indexeddb";
 import { LocalStorageCryptoStore } from "matrix-js-sdk/src/crypto/store/localStorage-crypto-store";
@@ -61,13 +62,18 @@ export default function createMatrixClient(opts: ICreateClientOpts): MatrixClien
         storeOpts.store = new MemoryStore({ localStorage });
     }
 
-    if (indexedDB) {
-        storeOpts.cryptoStore = new IndexedDBCryptoStore(indexedDB, "matrix-js-sdk:crypto");
-    } else if (localStorage) {
-        storeOpts.cryptoStore = new LocalStorageCryptoStore(localStorage);
-    } else {
-        storeOpts.cryptoStore = new MemoryCryptoStore();
-    }
+    // TODO: hack disabling crypto store - we don't want encryption!
+
+
+    // if (indexedDB) {
+    //     storeOpts.cryptoStore = new IndexedDBCryptoStore(indexedDB, "matrix-js-sdk:crypto");
+    // } else if (localStorage) {
+    //     storeOpts.cryptoStore = new LocalStorageCryptoStore(localStorage);
+    // } else {
+    //     storeOpts.cryptoStore = new MemoryCryptoStore();
+    // }
+
+    Matrix.setCryptoStoreFactory(() => null);
 
     return createClient({
         ...storeOpts,
